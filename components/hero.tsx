@@ -4,6 +4,8 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Github, Linkedin, Mail, FileText } from "lucide-react"
 import Link from "next/link"
+import Lottie from "lottie-react"
+import techLottie from "../public/tech-lottie.json"
 
 export function Hero() {
   const [text, setText] = useState("")
@@ -68,20 +70,21 @@ export function Hero() {
                   <span className="sr-only">Email</span>
                 </Button>
               </Link>
-              <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 hover:text-primary">
-                <FileText className="h-5 w-5" />
-                <span className="sr-only">Resume</span>
-              </Button>
+              <Link href="https://drive.google.com/file/d/1YQ-2x7xaz9xQPneTuhpNX-WuiaKwT6lP/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 hover:text-primary">
+                  <FileText className="h-5 w-5" />
+                  <span className="sr-only">Resume</span>
+                </Button>
+              </Link>
             </div>
           </div>
           <div className="flex items-center justify-center">
-            <div className="relative aspect-square overflow-hidden rounded-full border-4 border-primary/20 w-[280px] h-[280px] md:w-[400px] md:h-[400px] glow">
-              <img
-                src="https://v0.blob.com/7Ij9Rl.png"
-                alt="Harsh Yadav"
-                className="object-cover"
-                width={400}
-                height={400}
+            <div className="relative aspect-square overflow-hidden rounded-full border-4 border-primary/20 w-[280px] h-[280px] md:w-[400px] md:h-[400px] glow bg-background">
+              <Lottie
+                animationData={techLottie}
+                loop
+                autoplay
+                style={{ width: "100%", height: "100%" }}
               />
             </div>
           </div>

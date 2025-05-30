@@ -1,4 +1,17 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import Lottie from "lottie-react"
+
 export function About() {
+  const [animationData, setAnimationData] = useState(null)
+
+  useEffect(() => {
+    fetch("/coding-lottie.json")
+      .then((res) => res.json())
+      .then(setAnimationData)
+  }, [])
+
   return (
     <section id="about" className="py-16 md:py-24 bg-secondary/20 grid-bg">
       <div className="container px-4 md:px-6">
@@ -14,13 +27,14 @@ export function About() {
         <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
           <div className="flex justify-center">
             <div className="relative aspect-square overflow-hidden rounded-lg border border-primary/20 w-full max-w-[400px] glass-card">
-              <img
-                src="/placeholder.svg?height=400&width=400"
-                alt="About me"
-                className="object-cover"
-                width={400}
-                height={400}
-              />
+              {animationData && (
+                <Lottie
+                  animationData={animationData}
+                  loop
+                  autoplay
+                  style={{ width: "100%", height: "100%" }}
+                />
+              )}
             </div>
           </div>
           <div className="flex flex-col justify-center space-y-4">
